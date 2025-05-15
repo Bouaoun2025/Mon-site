@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Essijoumi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            font-weight: bold; /* Global bold setting */
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .tab-container {
+            overflow: hidden;
+            background-color: #34495e;
+            border-bottom: 3px solid #e67e22;
+        }
+        .tab-button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 20px;
+            transition: 0.3s;
+            font-size: 1.1em;
+            color: #ecf0f1;
+            font-weight: bold;
+        }
+        .tab-button:hover {
+            background-color: #4a6572;
+        }
+        .tab-button.active {
+            background-color: #e67e22;
+            color: #ffffff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: none;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .tab-content h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .tab-content h3 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .tab-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .tab-content ul li {
+            background-color: #f9f9f9;
+            border-left: 4px solid #e67e22;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+        .tab-content ul li strong { /* For specific strong tags if needed, though all text is bold */
+            color: #c0392b;
+        }
+        .tab-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .analysis, .conclusion, .recommendation-intro {
+            background-color: #e9f5fd;
+            border: 1px solid #d1e9fa;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .analysis strong, .conclusion strong, .recommendation-intro strong {
+            color: #1f618d;
+        }
+        .section-item {
+             background-color: #fdf2e9;
+             border-left: 4px solid #f39c12;
+             padding: 12px;
+             margin-bottom: 10px;
+             border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Enquête ménages et commerces Essijoumi</h1>
+        </header>
+
+        <div class="tab-container">
+            <button class="tab-button active" onclick="openTab(event, 'Menages')">Ménages</button>
+            <button class="tab-button" onclick="openTab(event, 'Commerces')">Commerces</button>
+        </div>
+
+        <!-- Ménages Tab Content -->
+        <div id="Menages" class="tab-content" style="display:block;">
+            <h2>Analyse de l'Enquête Ménages - Quartier Essijoumi (Tunis)</h2>
+            <p><strong>Introduction:</strong> Le présent rapport analyse les résultats d'une enquête menée auprès de 127 ménages du quartier d'Essijoumi à Tunis. L'objectif est d'évaluer les pratiques actuelles, les perceptions, la volonté de participation des citoyens, et d'identifier les leviers et freins potentiels pour assurer la réussite du projet pilote de collecte séparative des déchets en porte à porte.</p>
+
+            <h3>1. Analyse Détaillée des Résultats de l'Enquête</h3>
+
+            <div class="section-item">
+                <p><strong>Q2: Comment votre ménage se débarrasse-t-il de ses déchets ménagers (non triés) ?</strong></p>
+                <ul>
+                    <li>40.94% déposent leurs déchets à un point de regroupement spécifique.</li>
+                    <li>37.8% utilisent un bac/conteneur dans la rue près de chez eux.</li>
+                    <li>15.75% bénéficient d'une collecte qui passe directement devant chez eux.</li>
+                    <li>5.51% utilisent un bac/conteneur partagé dans leur immeuble.</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Les pratiques sont variées. Près de 57% ont une démarche active de dépôt (point de regroupement ou bac partagé). Une collecte en porte à porte représenterait un changement significatif et potentiellement une amélioration pour une majorité.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q3: À quelle fréquence votre ménage sort-il ses déchets non triés ?</strong></p>
+                <ul>
+                    <li>66.93% sortent leurs déchets tous les jours.</li>
+                    <li>18.9% plusieurs fois par semaine (3-4 fois).</li>
+                    <li>10.24% presque tous les jours (5-6 fois/semaine).</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Une très grande majorité (près de 96%) sort ses déchets au moins 3-4 fois par semaine, avec une prédominance quotidienne. Cela indique une attente de service fréquent.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q4: Votre ménage trie-t-il déjà certains types de déchets à la maison pour le recyclage ou la réutilisation ?</strong></p>
+                <ul>
+                    <li>Oui: 73.23%</li>
+                    <li>Non: 26.77%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> C'est un résultat très encourageant. Une large majorité des ménages a déjà une pratique de tri, ce qui constitue une base solide pour le projet pilote.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q5: Quels types de déchets triez-vous ? (Parmi les 115 répondants à cette question)</strong></p>
+                <ul>
+                    <li>Plastiques (bouteilles, emballages...) : 85.83% (soit 109 répondants)</li>
+                    <li>Déchets organiques (restes de nourriture, épluchures...): 16.54% (21 répondants)</li>
+                    <li>Papier / Carton (y compris tétrapack) : 3.94% (5 répondants)</li>
+                    <li>Verre (bouteilles, pots...) : 3.15% (4 répondants)</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Le plastique est de loin le déchet le plus trié, ce qui est courant. L'intérêt pour le tri des déchets organiques est notable. Le papier/carton et le verre sont actuellement peu triés, indiquant un potentiel de croissance.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q6: Que faites-vous des matériaux que vous triez (ou aimeriez trier) ? (Parmi les 118 répondants à cette question)</strong></p>
+                <ul>
+                    <li>Je les donne à des collecteurs informels : 82.68% (105 répondants)</li>
+                    <li>Je les jette avec les déchets non triés finalement : 7.87%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Ce point est crucial. L'écrasante majorité des déchets triés est actuellement captée par le secteur informel. Le projet pilote devra impérativement prendre en compte cette réalité et prévoir des mesures d'intégration ou de compensation pour les collecteurs informels.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q7: Connaissez-vous le principe de la collecte séparative en porte à porte ?</strong></p>
+                <ul>
+                    <li>Oui: 57.48%</li>
+                    <li>Non: 42.52%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Plus de la moitié des répondants connaissent le principe, ce qui est positif. Cependant, un effort de sensibilisation et d'explication sera nécessaire pour près de 43% de la population cible.</div>
+            </div>
+
+             <div class="section-item">
+                <p><strong>Q8: Votre ménage serait-il prêt à trier ses déchets en différentes catégories ?</strong></p>
+                <ul>
+                    <li>Oui: 70.08%</li>
+                    <li>Non: 29.92%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Une forte volonté de participation (70%) est exprimée, ce qui est un excellent indicateur pour la faisabilité du projet. Cela corrobore le fait que beaucoup trient déjà (Q4).</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q9: Quelles sont les principales raisons ou obstacles qui pourraient vous empêcher de participer à ce tri en porte à porte ?</strong></p>
+                <ul>
+                    <li>Autre (Préciser) : 36.22% (Nécessiterait une analyse des réponses textuelles)</li>
+                    <li>Manque d'espace à la maison pour plusieurs poubelles : 20.47%</li>
+                    <li>Je ne vois pas l'intérêt / les bénéfices pour moi : 18.9%</li>
+                    <li>Le tri est trop compliqué / je ne sais pas comment trier : 13.39%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Le manque d'espace est un obstacle pratique notable. Le manque de perception des bénéfices et la complexité perçue sont des points importants à adresser via la communication et la simplification du système. La catégorie "Autre" doit être explorée.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q10: Qu'est-ce qui vous motiverait le plus à participer à ce système de tri en porte à porte ?</strong></p>
+                <ul>
+                    <li>Améliorer la propreté de mon quartier : 52.76%</li>
+                    <li>Contribuer à protéger l'environnement : 51.97%</li>
+                    <li>Recevoir des informations claires et une aide pour le tri: 7.09%</li>
+                    <li>Avoir des bacs de tri pratiques à la maison : 7.09%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Les motivations intrinsèques (propreté, environnement) sont très fortes. Les aspects pratiques (information, bacs) sont secondaires mais restent des facilitateurs.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q11: Si vous deviez trier, quels types de déchets seriez-vous le plus enclin à séparer à la maison ?</strong></p>
+                <ul>
+                    <li>Plastiques: 94.49%</li>
+                    <li>Déchets organiques : 45.67%</li>
+                    <li>Papier / Carton : 11.81%</li>
+                    <li>Verre: 11.02%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Confirmation de l'énorme potentiel pour les plastiques. L'intérêt pour les déchets organiques est très significatif. Le papier/carton et le verre montrent un potentiel de mobilisation plus modeste mais réel, supérieur à la pratique actuelle (Q5).</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q12: Si les déchets étaient collectés en porte à porte, à quels jours et heures préférez-vous qu'ils soient collectés ?</strong></p>
+                <ul>
+                    <li>Plutôt le matin: 67.72%</li>
+                    <li>Peu importe l'heure, tant que c'est régulier : 11.81%</li>
+                    <li>Plutôt l'après-midi : 10.24%</li>
+                    <li>Plutôt le soir : 7.87%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Forte préférence pour une collecte matinale. La régularité est également un critère important.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q13: Combien de fois par semaine serait-il idéal que les déchets recyclables secs (Plastique/Papier/Verre/Métal) triés soient collectés ?</strong></p>
+                <ul>
+                    <li>Tous les jours : 39.37%</li>
+                    <li>2 fois/semaine : 27.56%</li>
+                    <li>Plusieurs fois/semaine : 20.47%</li>
+                    <li>Moins souvent : 12.6%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Une fréquence élevée est souhaitée, reflétant les habitudes actuelles de sortie des déchets (Q3). Une collecte quotidienne pourrait être coûteuse; 2 à 3 fois par semaine semble un compromis acceptable pour une part significative.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q14: Pour un projet de collecte séparative des déchets, avez-vous de l'espace à l'intérieur de la maison pour placer les bacs ?</strong></p>
+                <ul>
+                    <li>Oui: 88.19%</li>
+                    <li>Non: 11.81%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Une très large majorité déclare avoir de l'espace, ce qui est positif. Cela contraste légèrement avec Q9 où le manque d'espace était un obstacle pour 20%. La formulation ou la perception de "bacs" (taille) peut jouer.</div>
+            </div>
+
+            <div class="section-item">
+                <p><strong>Q15: Pour trier à la maison, de quels types d'équipements auriez-vous besoin ou quels types préférez-vous ?</strong></p>
+                <ul>
+                    <li>Plusieurs petits bacs (de différentes couleurs) pour chaque type de déchet: 70.87%</li>
+                    <li>Des sacs spécifiques (de différentes couleurs) pour chaque type de déchet : 25.98%</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Préférence nette pour des petits bacs colorés, ce qui facilite la distinction et l'usage.</div>
+            </div>
+
+            <h3>2. Synthèse des Conclusions Clés</h3>
+            <div class="conclusion">
+                <ul>
+                    <li><strong>Fort Potentiel d'Adhésion:</strong> Une majorité de ménages (73%) trie déjà et 70% se disent prêts à participer à un système de tri en porte à porte.</li>
+                    <li><strong>Plastique Prioritaire, Organique à Fort Potentiel:</strong> Les plastiques sont déjà largement triés et les ménages sont très enclins à les séparer. L'intérêt pour le tri des déchets organiques est notable (46% enclins à le faire). Le papier/carton et le verre ont un potentiel de croissance.</li>
+                    <li><strong>Rôle Crucial du Secteur Informel:</strong> Actuellement, 83% des déchets triés sont remis aux collecteurs informels. Leur intégration ou la gestion de l'impact du projet sur eux est un enjeu majeur (TdR A.3).</li>
+                    <li><strong>Préférences Logistiques Claires:</strong>
+                        <ul>
+                            <li>Collecte matinale préférée (68%).</li>
+                            <li>Fréquence souhaitée pour les recyclables secs : quotidienne (39%) ou 2-3 fois/semaine (cumul de 48%).</li>
+                            <li>Équipement : Préférence pour de petits bacs colorés (71%).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Communication et Sensibilisation Nécessaires:</strong>
+                        <ul>
+                            <li>43% ne connaissent pas le principe de la collecte en porte à porte.</li>
+                            <li>Les obstacles incluent le manque d'espace (malgré Q14), la perception du manque de bénéfices et la complexité.</li>
+                            <li>Les motivations principales sont la propreté du quartier et la protection de l'environnement.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Faisabilité de la Valorisation (à confirmer):</strong> L'existence d'un flux important de plastiques vers le secteur informel suggère qu'une filière de valorisation, au moins pour ce matériau, existe. Cela doit être confirmé pour les autres flux (papier, verre, métal) et structuré avec des recycleurs agréés (TdR A.3).</li>
+                </ul>
+            </div>
+
+            <h3>3. Évaluation de la Faisabilité du Projet Pilote (au regard des TdR)</h3>
+             <div class="conclusion">
+                <p>En se basant sur les résultats de cette enquête et les exigences des TdR, la faisabilité du projet pilote de collecte séparative en porte à porte dans le quartier d'Essijoumi apparaît globalement positive, mais conditionnée par la prise en compte de plusieurs facteurs critiques.</p>
+                <ul>
+                    <li><strong>Faisabilité auprès des citoyens (taux d'adhésion) - TdR A.1:</strong> Élevée. La volonté de participer (70%) et les pratiques de tri existantes (73%) sont des indicateurs très favorables. Le taux d'adhésion effectif dépendra de la qualité de la communication, de la facilité du système et de la prise en compte des obstacles.</li>
+                    <li><strong>Types de déchets à collecter - TdR A.1:</strong>
+                        <ul>
+                            <li>Déchets secs : Plastiques (forte priorité), papier/carton, métal (non sondé mais implicite dans "recyclables secs"). Le verre présente un intérêt plus faible mais reste pertinent.</li>
+                            <li>Déchets organiques : L'intérêt est significatif (46%). Une collecte séparée des biodéchets pourrait être envisagée, soit en parallèle, soit dans une phase ultérieure.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Quantités potentielles à collecter - TdR A.1:</strong> Avec 3991 logements et une production de 12-14 tonnes/jour, on pourrait espérer collecter entre 1.2 et 2 tonnes/jour de matières recyclables sèches (estimation grossière).</li>
+                    <li><strong>Horaires potentiels de la collecte - TdR A.1:</strong> Clairement le matin. La régularité est aussi un facteur clé.</li>
+                    <li><strong>Types et quantités des équipements pour chaque ménage - TdR A.1:</strong> Plusieurs petits bacs de couleurs différentes. Taille adaptée aux contraintes d'espace, fréquence de collecte de 2-3 fois/semaine.</li>
+                    <li><strong>Types et quantités des équipements nécessaires pour la collecte - TdR A.1:</strong> Véhicules de plus petite taille, adaptés aux rues, potentiellement compartimentés.</li>
+                    <li><strong>Impact sur les collecteurs informels et leur inclusion (TdR A.3):</strong> Point critique. Stratégie claire pour l'intégration ou compensation.</li>
+                    <li><strong>Faisabilité de l'action par rapport à la valorisation des déchets par les recycleurs privés agréés (TdR A.3):</strong> À investiguer. Forte récupération actuelle suggère demande. Partenariats formels nécessaires.</li>
+                </ul>
+            </div>
+
+            <h3>4. Recommandations pour la Conceptualisation du Projet Pilote</h3>
+            <div class="recommendation-intro">
+                <ul>
+                    <li><strong>Prioriser les flux :</strong> Commencer par plastiques, puis étendre au papier/carton et métaux. Évaluer verre. Potentiel déchets organiques pour phase ultérieure.</li>
+                    <li><strong>Concevoir un système simple et pratique :</strong> Petits bacs de couleurs distinctes. Collecte matinale, 2 à 3 fois par semaine pour recyclables secs, jours fixes.</li>
+                    <li><strong>Développer une stratégie d'intégration du secteur informel :</strong> Prérequis absolu. Concertations spécifiques.</li>
+                    <li><strong>Mettre en place une campagne de communication et de sensibilisation intensive :</strong> Expliquer fonctionnement, jours/horaires, consignes. Mettre en avant bénéfices. Aborder obstacles. Utiliser divers canaux.</li>
+                    <li><strong>Analyser la catégorie "Autre" des obstacles (Q9) :</strong> Analyser réponses textuelles pour identifier autres freins.</li>
+                    <li><strong>Confirmer les filières de valorisation :</strong> Identifier et établir contacts avec recycleurs privés agréés.</li>
+                    <li><strong>Prévoir un suivi-évaluation rapproché :</strong> Indicateurs pour taux de participation, quantités, satisfaction, impact secteur informel.</li>
+                </ul>
+            </div>
+            <div class="conclusion">
+                <p><strong>Conclusion Générale (Ménages):</strong> L'enquête révèle un terrain favorable et une forte volonté citoyenne. Faisabilité technique et sociale atteignable avec un système simple, bien communiqué, et intégration proactive du secteur informel.</p>
+            </div>
+
+        </div>
+
+        <!-- Commerces Tab Content -->
+        <div id="Commerces" class="tab-content">
+            <h2>Analyse de l'Enquête auprès des Commerces – Quartier Essijoumi</h2>
+            <p><strong>Introduction:</strong> Le présent rapport analyse les résultats d'une enquête menée auprès de 12 commerces du quartier d'Essijoumi à Tunis. L'objectif est d'évaluer la faisabilité du projet pilote, d'identifier les besoins, les attentes et les pratiques actuelles des commerces.</p>
+
+            <h3>1. Profil des Répondants et Pratiques Actuelles de Gestion des Déchets</h3>
+            <div class="section-item">
+                <p><strong>Échantillon:</strong> 12 commerces : Cafés (41.67%), Commerces divers (25%), Établissements de formation/éducation (16.67%), Fast Food (16.67%).</p>
+            </div>
+            <div class="section-item">
+                <p><strong>Elimination des déchets non triés (Q1 & Q2):</strong></p>
+                <ul>
+                    <li>100% des commerces déposent leurs déchets non triés quotidiennement dans des bacs/conteneurs en rue.</li>
+                </ul>
+                 <div class="analysis"><strong>Analyse:</strong> Indique une production régulière et un recours systématique aux infrastructures publiques.</div>
+            </div>
+            <div class="section-item">
+                <p><strong>Tri actuel des déchets (Q3 & Q4):</strong></p>
+                <ul>
+                    <li>Une majorité significative (75%, soit 9 commerces) déclare déjà trier.</li>
+                    <li>Parmi ceux qui trient, 100% (9 commerces) trient les plastiques. Papier/carton trié par 22.2% (2 commerces).</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Indicateur très positif. Focalisation sur plastiques (valeur perçue, facilité).</div>
+            </div>
+            <div class="section-item">
+                <p><strong>Valorisation des déchets triés (Q5):</strong></p>
+                <ul>
+                    <li>Sur les 9 commerces qui trient, 8 (soit 88.9%) donnent leurs déchets triés à des collecteurs informels.</li>
+                    <li>1 commerce (11.1%) les vend à des collecteurs informels ou à des points de rachat.</li>
+                </ul>
+                <div class="analysis"><strong>Constat crucial:</strong> Le secteur informel joue un rôle prépondérant. Point d'attention majeur.</div>
+            </div>
+
+            <h3>2. Perception et Adhésion au Projet de Collecte Séparative</h3>
+            <div class="section-item">
+                <p><strong>Connaissance du principe (Q6):</strong> 100% des commerces connaissent le principe. Facilite sensibilisation.</p>
+            </div>
+            <div class="section-item">
+                <p><strong>Volonté de trier (Q7):</strong> 100% des commerces se déclarent prêts à trier. Taux d'adhésion potentiel exceptionnel.</p>
+            </div>
+            <div class="section-item">
+                <p><strong>Motivations (Q9) - Unanimes (100% pour chaque item):</strong></p>
+                <ul>
+                    <li>Contribuer à protéger l'environnement.</li>
+                    <li>Savoir que les déchets seront recyclés et valorisés.</li>
+                    <li>Améliorer la propreté du quartier.</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Motivations fortes et alignées avec les objectifs du projet.</div>
+            </div>
+
+            <h3>3. Préférences pour la Mise en Œuvre du Projet Pilote</h3>
+            <div class="section-item">
+                <p><strong>Types de déchets à trier (Q10):</strong></p>
+                <ul>
+                    <li>100% sont enclins à trier les plastiques.</li>
+                    <li>41.67% (5 commerces) sont enclins à trier le papier/carton.</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Confirme priorité plastiques, puis papier/carton.</div>
+            </div>
+            <div class="section-item">
+                <p><strong>Horaires de collecte (Q11):</strong></p>
+                <ul>
+                    <li>Large majorité (75%, 9 commerces) préfère "Plutôt le matin".</li>
+                    <li>16.67% (2 commerces) "Plutôt le soir", 8.33% (1 commerce) "Plutôt l'après-midi".</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Préférence matinale claire.</div>
+            </div>
+            <div class="section-item">
+                <p><strong>Fréquence de collecte des recyclables secs (Q12):</strong></p>
+                <ul>
+                    <li>91.67% (11 commerces) souhaitent une collecte "Tous les jours".</li>
+                    <li>8.33% (1 commerce) opte pour "2 fois/semaine".</li>
+                </ul>
+                <div class="analysis"><strong>Analyse:</strong> Correspond à fréquence actuelle d'élimination, suggère volume de production quotidien.</div>
+            </div>
+            <div class="section-item">
+                <p><strong>Équipements de tri (Q13):</strong></p>
+                <ul>
+                    <li>Très forte préférence (91.67%, 11 commerces) pour "Plusieurs petits bacs (de différentes couleurs) pour chaque type de déchet".</li>
+                    <li>Seulement 8.33% (1 commerce) préfèrent des sacs spécifiques.</li>
+                </ul>
+            </div>
+
+            <h3>4. Analyse en Regard des Termes de Référence (TdRs)</h3>
+            <div class="conclusion">
+                <p>Les résultats de cette enquête auprès des commerces fournissent des éléments de réponse importants pour la Tâche A des TdRs :</p>
+                <p><strong>A.1 Définition de la méthodologie du diagnostic:</strong></p>
+                <ul>
+                    <li><strong>Faisabilité du projet auprès des citoyens (taux d'adhésion) commerces:</strong> Très élevée (100% de volonté de trier). Crucial de mener enquête similaire ménages.</li>
+                    <li><strong>Types de déchets à collecter:</strong> Plastiques en priorité, suivis par papier/carton.</li>
+                    <li><strong>Quantités potentielles à collecter:</strong> Collecte quotidienne souhaitée suggère volumes significatifs, quantification précise nécessaire.</li>
+                    <li><strong>Horaires potentiels de la collecte:</strong> Le matin est clairement privilégié.</li>
+                    <li><strong>Types et quantités des équipements pour chaque [commerce]:</strong> Plusieurs petits bacs de couleurs différentes.</li>
+                </ul>
+                <p><strong>A.3 Préparation de l'étude diagnostique:</strong></p>
+                <ul>
+                    <li><strong>Mesures pour assurer l'engagement des citoyens:</strong> Forte motivation est un levier. Fourniture équipements souhaités (bacs) et respect horaires/fréquences seront clés. Communication sur valorisation essentielle.</li>
+                    <li><strong>Analyse de l'impact du projet sur les collecteurs informels et inclusion:</strong> Importance cruciale. 75% des commerces interagissent déjà avec secteur informel. Projet pilote doit prévoir stratégie d'intégration/compensation.</li>
+                    <li><strong>Faisabilité de l'action par rapport à la valorisation des déchets par les recycleurs privés agréés:</strong> Motivation des commerces (Q9 "recyclés et valorisés") indique attente forte.</li>
+                </ul>
+            </div>
+
+            <h3>5. Conclusions et Prononcé sur la Faisabilité du Projet Pilote (pour le segment commerces)</h3>
+            <div class="conclusion">
+                <p><strong>Faisabilité Générale:</strong> Hautement faisable et prometteur. Indicateurs de connaissance, volonté, motivation exceptionnellement positifs.</p>
+                <p><strong>Points Forts / Opportunités:</strong></p>
+                <ul>
+                    <li>Niveau de sensibilisation et pratique du tri déjà existant chez 75% des commerçants.</li>
+                    <li>Adhésion unanime (100%) à l'idée de trier si le système est mis en place.</li>
+                    <li>Motivations claires et alignées sur les bénéfices environnementaux et sociaux.</li>
+                    <li>Préférences claires concernant les modalités pratiques.</li>
+                </ul>
+                <p><strong>Points de Vigilance / Défis:</strong></p>
+                <ul>
+                    <li>Intégration du secteur informel est le défi majeur.</li>
+                    <li>Fréquence de collecte quotidienne souhaitée implique coûts logistiques potentiellement élevés. Analyse coût-bénéfice nécessaire.</li>
+                    <li>Échantillon de 12 commerces est petit. Confirmation sur échantillon plus large ou focus groups pourrait être envisagée.</li>
+                    <li>Cette enquête ne couvre que les commerces. Enquête ménages indispensable.</li>
+                </ul>
+            </div>
+
+            <h3>Recommandations pour la suite (conformément aux TdRs) - Spécifique Commerces (et complémentaire à l'enquête ménage déjà réalisée):</h3>
+             <div class="recommendation-intro">
+                <ol>
+                    <li>Mener impérativement une enquête auprès des ménages (Note: cette partie du document fait référence à l'enquête ménage qui est justement présentée dans l'onglet "Ménages").</li>
+                    <li>Initier rapidement une phase de concertation avec les collecteurs informels.</li>
+                    <li>Dimensionner le service pilote en priorisant:
+                        <ul>
+                            <li>Collecte des plastiques, puis papier/carton.</li>
+                            <li>Collecte matinale.</li>
+                            <li>Fourniture de petits bacs de couleurs distinctes.</li>
+                            <li>Évaluer pertinence collecte quotidienne vs. fréquence optimisée (surtout cafés/fast-foods).</li>
+                        </ul>
+                    </li>
+                    <li>Préparer un plan de communication et de sensibilisation ciblé.</li>
+                    <li>Approfondir l'analyse des quantités potentielles de déchets recyclables générées par les commerces (pesées tests).</li>
+                </ol>
+            </div>
+            <div class="conclusion">
+                <p><strong>En conclusion (Commerces):</strong> Les résultats sont très encourageants et indiquent un fort potentiel de réussite pour le projet pilote A'SIMA Tunis dans ce segment spécifique, à condition de traiter avec soin l'intégration du secteur informel et de compléter ce diagnostic par une analyse des ménages (qui a été faite).</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        bouaounmohamed@gmail.com - Expert en gestion des déchets - Phone : +21654482942 - Tunisia
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        // document.getElementById("defaultOpen").click(); // Not needed if first tab is styled active in HTML
+    </script>
+
+</body>
+</html>
